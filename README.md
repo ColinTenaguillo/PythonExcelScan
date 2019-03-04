@@ -13,4 +13,5 @@ The point was :
 
 
 I can't show you the Excel i used for my project cause of confidentiality clause.
+
 I put a Exemple named "Test.xlsx" for you to see how it works
