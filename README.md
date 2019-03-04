@@ -12,4 +12,5 @@ The point was :
   -  Write all the scan results in a new xlsx to analyse the results
 
 
-I can't show you the Excel i used for my project cause of confidentiality clause I put a Exemple for you to see how it works
+I can't show you the Excel i used for my project cause of confidentiality clause.
+I put a Exemple named "Test.xlsx" for you to see how it works
