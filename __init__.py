@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 # -*-coding:Utf-8 -*
 
-""".py: Scan et analyse les tickets du fichier excel."""
+""".py: Scan and analyse the excel from ticket table of GLPI."""
 
 import openpyxl
-import mef  # where i create my class service and his functions
+import mef  # where i create my class "service" and his functions
 
 # settings for the xlsx that we are going to read
 nomxlsx_filepath = "Glpi_tracking/glpi_tracking2.xlsx"  # filepath of the xlsx
@@ -13,6 +13,8 @@ sheet = wb.sheetnames
 ws = wb[sheet[0]]
 row_count = ws.max_row
 column_count = ws.max_column
+# setting the rowrange, i start here in A1 Cell and
+# go to the M column max row line, mine had 130000 row
 rowrange = "A1:M" + str(row_count)
 # ---------------------------------------------------
 # settings for the xlsx we are going to write in
@@ -46,7 +48,7 @@ services = [
     mef.Service("ST22 - Dumps ABAP"),
 ]
 
-i = 1
+i = 1  # i at 1 cause row 0 doesnt exist
 for _row in ws[rowrange]:
     # Column C is where the ticket name is stored
     C = str(ws.cell(row=i, column=3).value)
@@ -58,12 +60,12 @@ for _row in ws[rowrange]:
         M = 0
     for Service in services:
         Service.ajoute(C, M)
-    i += 1
+    i += 1  # increment i to change row
 
-
-i = 2  # we put i at 2 cause the first row is used for column name
+# we put i at 2 cause the first row is used for column name
+i = 2
 for Service in services:
-    Service.print_excel(i, sheet_results)
+    Service.print_excel(i, sheet_results)  # function print_excel() in mef.py
     i += 1
 
 wb_results.save(xlsx_results_filepath)
